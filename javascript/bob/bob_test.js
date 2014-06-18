@@ -9,7 +9,7 @@ var Bob = function() {
     if(string == string.toUpperCase() && isOnlyNumeric(string) == false) {
       return 'Woah, chill out!';
     }
-    else if(punctuation_mark == '.' || punctuation_mark == '!' || isOnlyNumeric(string) == true) {
+    else if(punctuation_mark == '.' || punctuation_mark == '!' || isOnlyNumeric(string) == true && punctuation_mark != '?') {
         return 'Whatever.';
     }
     else if(punctuation_mark == '?') {
