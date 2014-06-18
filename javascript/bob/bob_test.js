@@ -6,6 +6,7 @@ var Bob = function() {
     var punctuation_mark = string[string.length - 1];
 
     // first check for all caps, if true, return chill out response
+
     if(string == string.toUpperCase() && isOnlyNumeric(string) == false) {
       return 'Woah, chill out!';
     }
@@ -15,41 +16,44 @@ var Bob = function() {
     else if(punctuation_mark == '?') {
       return 'Sure.';
     }
-    else
+    else if(string.length === 0) {
+      return 'Fine. Be that way!';
+    }
+    else {
       return 'Whatever.';
+    }
   };
 
-};
+  var isOnlyNumeric = function(string) {
+    var has_an_alphabet = false;
 
-var isOnlyNumeric = function(string) {
-  var has_an_alphabet = false;
-
-  for (var character in string) {
-    // check if it's an uppercase alphabetical character by checking the ascii value
-    var i = 65; // initialize i to ascii value of 'A'
-    while(i <= 90 && has_an_alphabet == false) {
-      if(string.charCodeAt(character) == i) {
-        has_an_alphabet = true;
+    for (var character in string) {
+      // check if it's an uppercase alphabetical character by checking the ascii value
+      var i = 65; // initialize i to ascii value of 'A'
+      while(i <= 90 && has_an_alphabet == false) {
+        if(string.charCodeAt(character) == i) {
+          has_an_alphabet = true;
+        }
+        i++;
       }
-      i++;
+
+      // check if it's an lowercase alphabetical character by checking the ascii value
+      var i = 97; // initialize i to ascii value of 'a'
+      while(i <= 122 && has_an_alphabet == false) {
+        if(string.charCodeAt(character) == i) {
+          has_an_alphabet = true;
+        }
+        i++;
+      }
     }
 
-    // check if it's an lowercase alphabetical character by checking the ascii value
-    var i = 97; // initialize i to ascii value of 'a'
-    while(i <= 122 && has_an_alphabet == false) {
-      if(string.charCodeAt(character) == i) {
-        has_an_alphabet = true;
-      }
-      i++;
+    if(has_an_alphabet == true) {
+      return false;
     }
-  }
-
-  if(has_an_alphabet == true) {
-    return false;
-  }
-  else {
-    return true;
-  }
+    else {
+      return true;
+    }
+  };
 };
 
 var bob = new Bob();
